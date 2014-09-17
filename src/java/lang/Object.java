@@ -114,8 +114,35 @@ public class Object {
      */
     public native int hashCode();
 
+    // 第8条：覆盖equals时请遵守通用约定 ——《Effective Java》
     /**
-     * Indicates whether some other object is "equal to" this one.
+     * 指出另一个对象是否"等于"这个对象。
+     * 
+     * <p>equals方法实现了等价关系(equivalence relation)：
+     * <ul>
+     * <li>自反性(reflexive)：对于任何非null的引用值x，x.equals(x)必须返回true。
+     * 
+     * <li>对称性(symmetric)：对于任何非null的引用值x和y，
+     *     当且仅当y.equals(x)返回true时，x.equals(y)必须返回true。
+     *     
+     * <li>传递性(transitive)：对于任何非null的引用值x、y和z，
+     *     如果x.equals(y)返回true，且y.equals(z)也返回true，则x.equals(z)也必须返回true。
+     *     
+     * <li>一致性(consistent)：对于任何非null的引用值x和y，
+     *     只要equals的比较操作在对象中所用的信息没有被修改，
+     *     多次调用x.equals(y)就会一致地返回true，或者一致地返回false。
+     *     
+     * <li>对于任何非null的引用值x，x.equals(null)必须返回false。
+     * </ul>
+     * 
+     * <p>equals方法比较两个对象的等同性，如果它们相等，则返回true。
+     * (Object类提供的equals方法使用相等操作符(==)确定两个对象是否相等)
+     * 
+     * <p><font color="red">如果你覆盖equals()，就必须也覆盖hashCode()。<br>
+     * 相等的对象必须具有相等的散列码。
+     * </font>
+     * 
+     * <p>Indicates whether some other object is "equal to" this one.
      * <p>
      * The {@code equals} method implements an equivalence relation
      * on non-null object references:
@@ -154,14 +181,14 @@ public class Object {
      * general contract for the {@code hashCode} method, which states
      * that equal objects must have equal hash codes.
      *
-     * @param   obj   the reference object with which to compare.
+     * @param   obj   the reference object with which to compare. 待比较的引用对象
      * @return  {@code true} if this object is the same as the obj
      *          argument; {@code false} otherwise.
      * @see     #hashCode()
      * @see     java.util.HashMap
      */
     public boolean equals(Object obj) {
-        return (this == obj);
+        return (this == obj); // 相等操作符(==)判断
     }
 
     /**
