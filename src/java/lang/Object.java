@@ -54,8 +54,31 @@ public class Object {
      */
     public final native Class<?> getClass();
 
+    // 等价方法(equality methods)
+    // 第9条：覆盖equals时总要覆盖hashCode ——《Effective Java》
     /**
-     * Returns a hash code value for the object. This method is
+     * 返回对象的散列码。(本地方法)
+     * 本方法支持散列表(hash tables)的优点，如由HashMap、HashSet提供的。
+     * 
+     * <p>hashCode的通用约定：
+     * <ul>
+     * <li>在应用程序的执行期间，只要对象的equals方法的比较操作所用到的信息没有被修改，
+     *     那么对这同一个对象调用多次，hashCode方法都必须始终如一地返回同一个整数。(程序可重现性)
+     *     在同一个应用程序的多次执行过程中，每次执行所返回的整数可以不一致。(对象的状态不同)
+     *     
+     * <li>如果两个对象根据equals(Object)方法比较是相等的，那么调用这两个对象中
+     *     任意一个对象的hashCode方法都必须产生同样的整数结果。(相等的对象，散列码肯定相同)
+     *     
+     * <li>如果两个对象根据equals(Object)方法比较是不相等的，那么调用这两个对象中
+     *     任意一个对象的hashCode方法，则不一定要产生不同的整数结果（散列冲突）。
+     *     但是程序员应该知道，给不相等的对象产生截然不同的整数结果，有可能提高散列表的性能。
+     * </ul>
+     * 
+     * <p>出于实用考虑，Object类定义的hashCode方法会为不同的对象返回不同的整数。
+     * (通常是，通过将对象的内部地址转换成一个整数来实现。
+     * 但是，这种实现技术不是Java语言强求的。)
+     * 
+     * <p>Returns a hash code value for the object. This method is
      * supported for the benefit of hash tables such as those provided by
      * {@link java.util.HashMap}.
      * <p>
