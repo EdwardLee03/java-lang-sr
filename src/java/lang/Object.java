@@ -19,6 +19,9 @@ package java.lang;
  */
 public class Object {
 
+	/*
+	 * 注册所有本地(native)方法，便于JVM查找。(通过"静态初始化块"方式执行)
+	 */
     private static native void registerNatives();
     static {
         registerNatives();
