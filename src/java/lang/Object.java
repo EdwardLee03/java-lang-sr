@@ -6,7 +6,10 @@
 package java.lang;
 
 /**
- * Class {@code Object} is the root of the class hierarchy.
+ * Object类位于类层次结构树的顶端(根)，每个类都是Object类的直接或者间接后裔。
+ * 所有对象(包括数组)都实现Object的实例方法。
+ * 
+ * <p>Class {@code Object} is the root of the class hierarchy.
  * Every class has {@code Object} as a superclass. All objects,
  * including arrays, implement the methods of this class.
  *
