@@ -28,7 +28,12 @@ public class Object {
     }
 
     /**
-     * Returns the runtime class of this {@code Object}. The returned
+     * 返回对象的运行时类。(本地方法)
+     * 返回的Class对象是一个被表示类的静态同步方法锁定的对象。
+     * 
+     * <p>实际的返回类型是Class<? extends |X|>，其中|X|是表达式静态类型的擦除。
+     * 
+     * <p>Returns the runtime class of this {@code Object}. The returned
      * {@code Class} object is the object that is locked by {@code
      * static synchronized} methods of the represented class.
      *
